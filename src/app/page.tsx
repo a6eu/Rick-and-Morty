@@ -27,7 +27,6 @@ export default function Home() {
         <ErrorComponent message={'Unknown Error'} />
     </div>
 
-    console.log(data)
 
     return (
         <div className="min-h-screen flex flex-col gap-10 items-center py-20">
@@ -36,8 +35,7 @@ export default function Home() {
                 totalItems={data?.info.count ?? 0}
                 itemsPerPage={20}
                 setCurrentPage={handlePageChange}
-                currentPage={page}
-            />
+                currentPage={1} />
         </div>
     )
 }

@@ -7,11 +7,12 @@ export const Header = () => {
     const searchParams = useSearchParams()
     const router = useRouter()
     const [query, setQuery] = useState(searchParams.get('name') || '')
+    const params = new URLSearchParams(searchParams.toString())
 
     useEffect(() => {
-        const params = new URLSearchParams(searchParams.toString())
         if (query) {
             params.set('name', query)
+            params.set('page', '1')
         } else {
             params.delete('name')
         }

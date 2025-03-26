@@ -1,5 +1,6 @@
 import React from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useSearchParams } from 'next/navigation'
 
 type Props = {
     totalItems: number;
@@ -11,11 +12,12 @@ type Props = {
 export const Pagination = ({
                                totalItems,
                                itemsPerPage,
-                               currentPage,
                                setCurrentPage,
                            }: Props) => {
     const totalPages = Math.ceil(totalItems / itemsPerPage)
     const maxVisiblePages = 5
+    const searchParams = useSearchParams()
+    const currentPage = parseInt(searchParams.get('page') || '1', 10)
 
     const generatePages = () => {
         if (totalPages <= maxVisiblePages) {
